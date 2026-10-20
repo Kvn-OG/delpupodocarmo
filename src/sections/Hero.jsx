@@ -23,8 +23,8 @@ function Words({ text }) {
                 {word}
               </span>
             </span>
-            {BREAKS_MOBILE.includes(i) && <br className="lg:hidden" />}
-            {BREAKS_DESKTOP.includes(i) && <br className="hidden lg:inline" />}
+            {BREAKS_MOBILE.includes(i) && <br className="lg:hidden short:hidden" />}
+            {BREAKS_DESKTOP.includes(i) && <br className="hidden lg:inline short:inline" />}
             {i < words.length - 1 && ' '}
           </span>
         ))}
@@ -66,11 +66,11 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-royal/55 via-royal/20 to-royal/60" />
         </div>
 
-        <div className="flex flex-1 items-center justify-center px-5 pt-28 pb-10 sm:px-8 lg:pt-32">
+        <div className="flex flex-1 items-center justify-center px-5 pt-28 pb-10 sm:px-8 lg:pt-32 short:pt-20 short:pb-5">
           <h1
             id="hero-title"
             data-hero="title"
-            className="text-center font-display text-[clamp(2.05rem,0.9rem+6vw,4rem)] lg:text-[min(6.4vw,7.5rem)] leading-[1.02] tracking-[-0.015em] text-white"
+            className="text-center font-display text-[clamp(2.05rem,0.9rem+6vw,4rem)] lg:text-[min(6.4vw,7.5rem)] short:text-[clamp(2rem,5.4vw,3rem)] leading-[1.02] tracking-[-0.015em] text-white"
           >
             <Words text={TITLE} />
           </h1>
@@ -78,7 +78,7 @@ export default function Hero() {
 
         <figure
           data-hero="panel"
-          className="relative mx-auto w-[calc(100%-2.5rem)] overflow-hidden rounded-t-[min(12rem,30vw)] bg-royal-800 lg:w-[min(64%,980px)]"
+          className="relative mx-auto w-[calc(100%-2.5rem)] overflow-hidden rounded-t-[min(12rem,30vw)] bg-royal-800 lg:w-[min(64%,980px)] short:w-[min(66%,720px)]"
         >
           <ResponsiveImage
             name="hero-casa"
@@ -89,7 +89,7 @@ export default function Hero() {
             height="853"
             priority
             className="block"
-            imgClassName="aspect-[4/3] w-full scale-110 object-cover sm:aspect-[16/9] lg:aspect-[16/7]"
+            imgClassName="aspect-[4/3] w-full scale-110 object-cover sm:aspect-[16/9] lg:aspect-[16/7] short:aspect-[3/1]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-royal/50 via-transparent to-transparent" aria-hidden="true" />
         </figure>

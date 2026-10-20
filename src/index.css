@@ -33,6 +33,9 @@
   --radius-card: 1.75rem;
 }
 
+/* Celulares deitados (pouca altura): o hero usa uma composição compacta */
+@custom-variant short (@media (orientation: landscape) and (max-height: 540px));
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
