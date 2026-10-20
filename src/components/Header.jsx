@@ -115,7 +115,7 @@ export default function Header({ onHome = true }) {
           </ul>
           <div className="mt-auto pt-10">
             <Button href={whatsappLink('geral')} external variant="gold" leadingIcon={WhatsAppIcon} className="w-full justify-between" onClick={closeFromLink}>
-              Fale com uma corretora
+              Fale com a nossa equipe
             </Button>
             <div className="mt-6 flex items-center justify-between text-sm text-white/65">
               <span>CRECI {site.creci}</span>
@@ -177,7 +177,7 @@ export default function Header({ onHome = true }) {
               <span className="inline-flex size-7 items-center justify-center rounded-full bg-royal text-gold">
                 <WhatsAppIcon className="size-3.5" />
               </span>
-              Fale com uma corretora
+              Fale com a nossa equipe
               <span className="sr-only"> (abre em nova aba)</span>
             </a>
             <button
