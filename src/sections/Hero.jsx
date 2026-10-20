@@ -7,7 +7,7 @@ import { site } from '../data/site'
 import { whatsappLink } from '../lib/whatsapp'
 import { FULL_MOTION, gsap } from '../lib/gsap'
 
-const TITLE = 'O seu próximo capítulo começa com a conquista do seu imóvel.'
+const TITLE = 'O caminho para transformar sonhos em endereços'
 
 function Letters({ text }) {
   return text.split('').map((char, i) => (
