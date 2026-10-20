@@ -2,7 +2,6 @@ import { useLayoutEffect, useRef } from 'react'
 import Button from '../components/Button'
 import LoopVideo from '../components/LoopVideo'
 import ResponsiveImage from '../components/ResponsiveImage'
-import { WhatsAppIcon } from '../components/icons'
 import { site } from '../data/site'
 import { whatsappLink } from '../lib/whatsapp'
 import { FULL_MOTION, gsap } from '../lib/gsap'
@@ -86,11 +85,6 @@ export default function Hero() {
               Na Delpupo do Carmo, você encontra atendimento próximo, orientação em cada etapa e oportunidades para
               diferentes momentos da sua vida.
             </p>
-            <div className="pt-2">
-              <Button href={whatsappLink('geral')} external variant="glass" leadingIcon={WhatsAppIcon} icon={null} className="min-h-11 text-[0.85rem]">
-                Fale com uma corretora
-              </Button>
-            </div>
           </div>
         </div>
 

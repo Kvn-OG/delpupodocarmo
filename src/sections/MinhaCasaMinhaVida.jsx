@@ -71,12 +71,9 @@ export default function MinhaCasaMinhaVida() {
             </p>
           </div>
 
-          <div data-animate="fade" className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href={whatsappLink('mcmv')} external variant="dark">
+          <div data-animate="fade" className="mt-9">
+            <Button href={whatsappLink('mcmv')} external variant="dark" leadingIcon={WhatsAppIcon}>
               Quero conquistar minha casa própria
-            </Button>
-            <Button href={whatsappLink('financiamento')} external variant="outlineDark" leadingIcon={WhatsAppIcon} icon={null}>
-              Tire suas dúvidas pelo WhatsApp
             </Button>
           </div>
 

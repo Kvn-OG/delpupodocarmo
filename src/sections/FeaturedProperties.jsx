@@ -54,34 +54,32 @@ export default function FeaturedProperties() {
       </div>
 
       <div className="container-site">
-        <div className="mt-16 flex flex-col gap-6 rounded-[var(--radius-card)] bg-cream p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
-          <p data-animate="fade" className="max-w-xl text-royal/80">
-            <strong className="font-medium text-royal">Está procurando algo específico?</strong> Conte para nossa
-            equipe o que você precisa. Vamos ajudar você a conhecer as oportunidades disponíveis.
-          </p>
-          <div data-animate="fade" className="flex flex-col gap-3 sm:flex-row">
-            <Button href="#vitrine" variant="dark">
-              Consultar imóveis disponíveis
-            </Button>
-            <Button href={whatsappLink('compra')} external variant="outlineDark" leadingIcon={WhatsAppIcon} icon={null}>
-              Encontrar um imóvel pelo WhatsApp
-            </Button>
+        <div id="vitrine" className="mt-20">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <h3 data-animate="fade" className="eyebrow text-brown">
+              {hasProperties ? 'Oportunidades disponíveis' : 'Vitrine de imóveis'}
+            </h3>
+            <p data-animate="fade" className="max-w-xl text-[0.95rem] text-royal/75 lg:text-right">
+              <strong className="font-medium text-royal">Está procurando algo específico?</strong> Conte para nossa
+              equipe o que você precisa. Vamos ajudar você a conhecer as oportunidades disponíveis.
+            </p>
           </div>
-        </div>
-
-        <div id="vitrine" className="mt-16">
-          <h3 data-animate="fade" className="eyebrow text-brown">
-            {hasProperties ? 'Oportunidades disponíveis' : 'Vitrine de imóveis'}
-          </h3>
           <div className="mt-6">
             {hasProperties ? (
-              <ul data-animate="stagger" className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                {properties.map((property) => (
-                  <li key={property.id} className="flex">
-                    <PropertyCard property={property} />
-                  </li>
-                ))}
-              </ul>
+              <>
+                <ul data-animate="stagger" className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  {properties.map((property) => (
+                    <li key={property.id} className="flex">
+                      <PropertyCard property={property} />
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-10 flex justify-center">
+                  <Button href={whatsappLink('compra')} external variant="dark" leadingIcon={WhatsAppIcon}>
+                    Encontrar um imóvel pelo WhatsApp
+                  </Button>
+                </div>
+              </>
             ) : (
               <EmptyShowcase />
             )}
