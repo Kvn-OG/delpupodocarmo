@@ -5,10 +5,13 @@
    - Giarek Regular   → primária, headlines
    - Aalto Sans Pro   → secundária, textos menores e parágrafos
 
+   Headlines seguem o estilo da Bafegis (Ermedia Studio, paga; a versão
+   gratuita é demo de uso pessoal e não pode ser usada neste site).
+
    Equivalentes gratuitas (licença SIL OFL), hospedadas localmente via
    Fontsource, escolhidas por comparação visual com as originais:
-   - Noto Serif Display (variável, largura reduzida para ~85%)
-       alto contraste, altura-x alta e proporções mais estreitas, como a Giarek
+   - Noto Serif Display (variável, largura 66% e peso 380 — ver src/index.css)
+       condensada e de alto contraste, como a Bafegis
    - Encode Sans (variável)
        sans serif humanista, neutra e amigável, como a Aalto Sans
 

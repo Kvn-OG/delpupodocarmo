@@ -38,8 +38,8 @@ comentado no arquivo) e a foto em `public/images/imoveis/`. Com ao menos um imó
 vitrine troca o estado vazio pelos cards automaticamente.
 
 **Fontes** — as oficiais são Giarek Regular (headlines) e Aalto Sans Pro (textos), ambas pagas.
-O site usa equivalentes gratuitas (OFL) hospedadas localmente: Noto Serif Display, com largura
-reduzida para se aproximar da Giarek, e Encode Sans. Para usar as oficiais, copie os `.woff2`
+As headlines seguem o estilo da Bafegis (também paga). O site usa equivalentes gratuitas (OFL)
+hospedadas localmente: Noto Serif Display condensada (largura 66%, peso 380) e Encode Sans. Para usar as oficiais, copie os `.woff2`
 licenciados para `src/assets/fonts/` e descomente os `@font-face` em `src/styles/fonts.css`.
 
 **Novos vídeos de entrega de chaves** — converta para MP4 H.264 (vídeos HEVC/.mov do
