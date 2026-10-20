@@ -107,11 +107,11 @@ export const differentials = [
  */
 export const stories = [
   {
-    id: 'patricia-jhonatan',
+    id: 'renatha-cristiano',
     title: 'Entrega de chaves',
-    names: 'Patricia e Jhonatan',
-    src: '/media/entrega-patricia-jhonatan.mp4',
-    poster: '/media/entrega-patricia-jhonatan-poster.webp',
+    names: 'Renatha e Cristiano',
+    src: '/media/entrega-renatha-cristiano.mp4',
+    poster: '/media/entrega-renatha-cristiano-poster.webp',
   },
   {
     id: 'rayner-anapaula',

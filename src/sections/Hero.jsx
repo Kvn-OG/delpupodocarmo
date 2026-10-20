@@ -54,24 +54,30 @@ export default function Hero() {
       aria-labelledby="hero-title"
       className="grain relative isolate overflow-hidden bg-royal text-white"
     >
-      {/* Fundo: loop de marca tingido com o Royalty Green */}
+      {/* Fundo animado: loop de marca (assets/fundo_verde_loop.mp4).
+          Com movimento reduzido, exibe o primeiro frame como imagem estática. */}
       <div data-hero="bg" className="absolute inset-0 -z-10" aria-hidden="true">
         {playVideo ? (
           <video
-            className="size-full object-cover opacity-70 [filter:brightness(0.5)_saturate(0.55)]"
-            src="/media/hero-loop.mp4"
+            className="size-full object-cover"
             poster="/media/hero-loop-poster.webp"
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-          />
+            disablePictureInPicture
+          >
+            <source src="/media/hero-loop-1920.mp4" type="video/mp4" media="(min-width: 1024px)" />
+            <source src="/media/hero-loop.mp4" type="video/mp4" />
+          </video>
         ) : (
-          <img src="/media/hero-loop-poster.webp" alt="" className="size-full object-cover opacity-70 [filter:brightness(0.5)_saturate(0.55)]" />
+          <img src="/media/hero-loop-poster.webp" alt="" className="size-full object-cover" />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-royal/70 via-royal/40 to-royal" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_40%,rgba(225,189,35,0.10),transparent_55%)]" />
+        {/* Véus em Royalty Green apenas onde há texto, preservando a animação visível */}
+        <div className="absolute inset-0 bg-royal/40 lg:hidden" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-royal/90 via-royal/55 to-royal/10 lg:block" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-royal/60 to-transparent" />
       </div>
 
       <div className="container-site grid min-h-[100svh] items-center gap-12 pt-32 pb-16 lg:grid-cols-12 lg:gap-8 lg:pt-36 lg:pb-24">

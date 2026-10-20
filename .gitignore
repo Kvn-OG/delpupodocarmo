@@ -7,3 +7,4 @@ dist
 
 # Vídeos originais (>100 MB, limite do GitHub). Versões otimizadas em public/media/
 assets/*.mov
+assets/entregadechaves-*.mp4
