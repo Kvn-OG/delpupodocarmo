@@ -1,0 +1,154 @@
+@import 'tailwindcss';
+@import './styles/fonts.css';
+@import 'lenis/dist/lenis.css';
+
+/* ------------------------------------------------------------------
+   Tokens da marca — Imobiliária Delpupo do Carmo
+   Cores oficiais do manual: Royalty Green, Golden Gradient,
+   Golden Brown e Basic White. Os demais tons são apenas variações
+   (tints/shades) dessas cores, usados para superfícies e linhas.
+------------------------------------------------------------------- */
+@theme {
+  /* Oficiais */
+  --color-royal: #152b23;
+  --color-gold: #e1bd23;
+  --color-brown: #754c28;
+  --color-white: #ffffff;
+
+  /* Derivados */
+  --color-royal-900: #0f211a;
+  --color-royal-800: #1c372d;
+  --color-royal-700: #24453a;
+  --color-gold-light: #e9cb4d;
+  --color-cream: #f7f4ec;
+  --color-sand: #e7e0cf;
+
+  /* Tipografia — arquivos oficiais entram primeiro na pilha (ver styles/fonts.css) */
+  --font-display: 'Montecatini Pro', 'Marcellus', 'Cormorant Garamond', Georgia, serif;
+  --font-slogan: 'Azo Sans', 'Jost Variable', 'Jost', system-ui, sans-serif;
+  --font-sans: 'Jost Variable', 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius-arch: 9rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-white font-sans text-royal antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-royal);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Foco programático em seções (navegação por âncora) não precisa de contorno */
+  [tabindex='-1']:focus {
+    outline: none;
+  }
+
+  .surface-light :focus-visible {
+    outline-color: var(--color-brown);
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-y {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-sans text-[0.75rem] font-medium tracking-[0.22em] uppercase;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply block h-px w-8 bg-current opacity-60;
+  }
+
+  .heading-xl {
+    font-size: clamp(2.35rem, 1.4rem + 3.9vw, 4.6rem);
+    line-height: 1.04;
+  }
+
+  .heading-lg {
+    font-size: clamp(2rem, 1.35rem + 2.6vw, 3.4rem);
+    line-height: 1.08;
+  }
+
+  .heading-md {
+    font-size: clamp(1.45rem, 1.15rem + 1vw, 1.9rem);
+    line-height: 1.2;
+  }
+
+  .text-lead {
+    font-size: clamp(1.075rem, 1rem + 0.3vw, 1.2rem);
+    line-height: 1.7;
+  }
+
+  /* Canto em arco: referência às curvas do símbolo da chave */
+  .arch-tl {
+    border-top-left-radius: clamp(4rem, 12vw, var(--radius-arch));
+  }
+
+  .arch-tr {
+    border-top-right-radius: clamp(4rem, 12vw, var(--radius-arch));
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

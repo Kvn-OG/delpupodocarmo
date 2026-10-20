@@ -1,0 +1,39 @@
+/* ------------------------------------------------------------------
+   Fontes
+   ------------------------------------------------------------------
+   As fontes oficiais da marca (Montecatini Pro e Azo Sans) são
+   licenciadas e ainda não foram disponibilizadas no projeto.
+
+   Enquanto isso, usamos fallbacks de licença aberta, hospedados
+   localmente via Fontsource (sem requisições a terceiros):
+   - Marcellus  → títulos (serifas "flare", próxima da Montecatini Pro)
+   - Jost       → textos e slogan (geométrica, próxima da Azo Sans)
+
+   Para ativar as fontes oficiais:
+   1. Copie os arquivos .woff2 licenciados para src/assets/fonts/
+   2. Descomente os blocos @font-face abaixo e ajuste os nomes
+      dos arquivos. Os tokens --font-display e --font-slogan
+      (src/index.css) já listam as fontes oficiais em primeiro lugar.
+------------------------------------------------------------------- */
+
+@import '@fontsource/marcellus/latin-400.css';
+@import '@fontsource/marcellus/latin-ext-400.css';
+@import '@fontsource-variable/jost/wght.css';
+
+/*
+@font-face {
+  font-family: 'Montecatini Pro';
+  src: url('../assets/fonts/MontecatiniPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Azo Sans';
+  src: url('../assets/fonts/AzoSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+*/
