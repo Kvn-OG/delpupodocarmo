@@ -4,11 +4,11 @@ import Footer from './components/Footer'
 import FloatingActions from './components/FloatingActions'
 import Hero from './sections/Hero'
 import About from './sections/About'
+import Stories from './sections/Stories'
 import FeaturedProperties from './sections/FeaturedProperties'
 import Services from './sections/Services'
 import WhyChooseUs from './sections/WhyChooseUs'
 import MinhaCasaMinhaVida from './sections/MinhaCasaMinhaVida'
-import Testimonials from './sections/Testimonials'
 import FinalCTA from './sections/FinalCTA'
 import Contact from './sections/Contact'
 import { useSiteMotion } from './hooks/useSiteMotion'
@@ -23,11 +23,11 @@ export default function App() {
       <main id="conteudo" ref={mainRef} tabIndex={-1} className="outline-none">
         <Hero />
         <About />
+        <Stories />
         <FeaturedProperties />
         <Services />
         <WhyChooseUs />
         <MinhaCasaMinhaVida />
-        <Testimonials />
         <FinalCTA />
         <Contact />
       </main>

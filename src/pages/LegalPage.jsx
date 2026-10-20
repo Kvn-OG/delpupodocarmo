@@ -15,13 +15,13 @@ export default function LegalPage({ kind }) {
     <>
       <Header onHome={false} />
       <main id="conteudo" ref={mainRef} tabIndex={-1} className="surface-light outline-none">
-        <div className="bg-royal pt-36 pb-16 text-white lg:pt-44 lg:pb-20">
+        <div className="frame mt-2.5 bg-royal pt-32 pb-14 text-white sm:mt-4 lg:pt-40 lg:pb-20">
           <div className="container-site">
             <a href="/" className="inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-gold">
               <ArrowLeft className="size-4" aria-hidden="true" />
               Voltar para o início
             </a>
-            <h1 className="heading-xl mt-8 text-white">{page.title}</h1>
+            <h1 className="mt-8 font-display text-[clamp(2.4rem,1.4rem+3.6vw,4.4rem)] leading-[1.05] text-white">{page.title}</h1>
             <p className="mt-6 text-sm text-white/60">Última atualização: {LAST_UPDATE}</p>
           </div>
         </div>

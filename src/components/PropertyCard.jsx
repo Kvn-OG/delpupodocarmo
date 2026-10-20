@@ -10,7 +10,7 @@ export default function PropertyCard({ property }) {
   const message = `Olá! Tenho interesse no imóvel "${title}" (${location}) que vi no site da Delpupo do Carmo. Poderia me passar mais informações?`
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-lg border border-sand bg-white transition-shadow duration-500 hover:shadow-[0_24px_60px_-30px_rgba(21,43,35,0.35)]">
+    <article className="group flex flex-col overflow-hidden rounded-[1.25rem] border border-sand bg-white transition-shadow duration-500 hover:shadow-[0_24px_60px_-30px_rgba(21,43,35,0.35)]">
       <div className="relative aspect-[4/3] overflow-hidden bg-cream">
         <img
           src={image}
@@ -23,7 +23,7 @@ export default function PropertyCard({ property }) {
         />
         <div className="absolute top-4 left-4 flex gap-2">
           {[type, purpose].filter(Boolean).map((tag) => (
-            <span key={tag} className="rounded-sm bg-royal/90 px-2.5 py-1 text-xs font-medium tracking-wide text-white">
+            <span key={tag} className="rounded-full bg-royal/90 px-3 py-1 text-xs font-medium tracking-wide text-white">
               {tag}
             </span>
           ))}
@@ -57,7 +57,7 @@ export default function PropertyCard({ property }) {
         {features.length > 0 && (
           <ul className="mt-4 flex flex-wrap gap-2" aria-label="Características">
             {features.map((feature) => (
-              <li key={feature} className="rounded-sm bg-cream px-2.5 py-1 text-xs text-royal/80">
+              <li key={feature} className="rounded-full bg-cream px-3 py-1 text-xs text-royal/80">
                 {feature}
               </li>
             ))}

@@ -2,11 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import Button from './Button'
-import { WhatsAppIcon, InstagramIcon } from './icons'
+import { InstagramIcon, WhatsAppIcon } from './icons'
 import { navigation, site } from '../data/site'
 import { whatsappLink } from '../lib/whatsapp'
 import { startScroll, stopScroll } from '../lib/smoothScroll'
 
+/**
+ * No topo da página inicial, a navegação fica "dentro" do card do hero.
+ * Ao rolar, vira uma barra flutuante em pílula.
+ *
+ * Importante: nada no <header> usa backdrop-filter, para não criar um bloco
+ * de contenção que esconderia o menu mobile (position: fixed).
+ */
 export default function Header({ onHome = true }) {
   const [scrolled, setScrolled] = useState(!onHome)
   const [open, setOpen] = useState(false)
@@ -17,23 +24,19 @@ export default function Header({ onHome = true }) {
 
   const hrefFor = (id) => (onHome ? `#${id}` : `/#${id}`)
 
-  // Fundo sólido após o início da rolagem
   useEffect(() => {
     if (!onHome) return
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 60)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [onHome])
 
-  // Seção ativa na navegação
   useEffect(() => {
     if (!onHome) return
     const sections = navigation.map(({ id }) => document.getElementById(id)).filter(Boolean)
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id))
-      },
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id)),
       { rootMargin: '-45% 0px -50% 0px' },
     )
     sections.forEach((section) => observer.observe(section))
@@ -50,10 +53,7 @@ export default function Header({ onHome = true }) {
     panelRef.current?.querySelector('a')?.focus()
 
     const onKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setOpen(false)
-        return
-      }
+      if (event.key === 'Escape') return setOpen(false)
       if (event.key !== 'Tab') return
       const focusables = [toggle, ...panelRef.current.querySelectorAll('a')]
       const first = focusables[0]
@@ -79,97 +79,33 @@ export default function Header({ onHome = true }) {
     }
   }, [open])
 
-  const solid = scrolled || open
-
-  // Ao escolher uma seção, o foco segue para ela (não volta ao botão do menu)
   const closeFromLink = () => {
     restoreFocusRef.current = false
     setOpen(false)
   }
 
+  const compact = scrolled || open
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Fundo em camada própria: backdrop-filter no <header> criaria um bloco de
-          contenção para o menu mobile (position: fixed) e o esconderia. */}
-      <div
-        aria-hidden="true"
-        className={`absolute inset-x-0 top-0 h-[4.5rem] transition-[opacity,box-shadow] duration-500 ease-(--ease-brand) lg:h-20 ${
-          solid ? 'bg-royal/95 opacity-100 shadow-[0_1px_0_rgba(225,189,35,0.14)] backdrop-blur-md' : 'opacity-0'
-        }`}
-      />
       <a
         href="#conteudo"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-gold focus:px-4 focus:py-2 focus:text-royal"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-gold focus:px-4 focus:py-2 focus:text-royal"
       >
         Pular para o conteúdo
       </a>
 
-      <div className="relative container-site flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
-        <a href={onHome ? '#inicio' : '/'} className="shrink-0" aria-label="Imobiliária Delpupo do Carmo — página inicial">
-          <Logo variant="light" height={44} className="h-10 w-auto lg:h-11" />
-        </a>
-
-        <nav aria-label="Navegação principal" className="hidden xl:block">
-          <ul className="flex items-center gap-8">
-            {navigation.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={hrefFor(item.id)}
-                  aria-current={onHome && active === item.id ? 'true' : undefined}
-                  className="group relative py-2 text-[0.92rem] text-white/80 transition-colors duration-300 hover:text-white aria-[current]:text-white"
-                >
-                  {item.label}
-                  <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-gold transition-transform duration-500 ease-(--ease-brand) group-hover:scale-x-100 group-aria-[current]:scale-x-100" />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <div className="hidden md:block">
-            <Button
-              href={whatsappLink('geral')}
-              external
-              variant={solid ? 'gold' : 'outlineLight'}
-              icon={WhatsAppIcon}
-              iconPosition="start"
-              className="min-h-11 px-5 text-[0.88rem] whitespace-nowrap"
-            >
-              Fale com uma corretora
-            </Button>
-          </div>
-
-          <button
-            ref={toggleRef}
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            aria-expanded={open}
-            aria-controls="menu-mobile"
-            className="relative z-10 inline-flex size-11 items-center justify-center rounded-md border border-white/25 text-white transition-colors hover:border-gold hover:text-gold xl:hidden"
-          >
-            <span className="sr-only">{open ? 'Fechar menu' : 'Abrir menu'}</span>
-            {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Menu mobile */}
-      <div
-        id="menu-mobile"
-        ref={panelRef}
-        hidden={!open}
-        className="fixed inset-x-0 top-[4.5rem] bottom-0 overflow-y-auto bg-royal lg:top-20 xl:hidden"
-      >
-        <nav aria-label="Navegação principal (menu)" className="container-site flex min-h-full flex-col pt-8 pb-10">
-          <ul className="border-t border-white/10">
+      {/* Menu mobile (atrás da barra) */}
+      <div id="menu-mobile" ref={panelRef} hidden={!open} className="fixed inset-0 overflow-y-auto bg-royal xl:hidden">
+        <nav aria-label="Navegação principal (menu)" className="container-site flex min-h-full flex-col pt-28 pb-10">
+          <ul>
             {navigation.map((item, index) => (
               <li key={item.id} className="border-b border-white/10">
                 <a
                   href={hrefFor(item.id)}
                   onClick={closeFromLink}
                   aria-current={onHome && active === item.id ? 'true' : undefined}
-                  className="flex items-baseline gap-5 py-5 font-display text-[1.65rem] leading-none text-white transition-colors hover:text-gold aria-[current]:text-gold"
+                  className="flex items-baseline gap-5 py-5 font-display text-[1.7rem] leading-none text-white transition-colors hover:text-gold aria-[current]:text-gold"
                 >
                   <span className="font-sans text-xs tracking-[0.2em] text-gold/80">{String(index + 1).padStart(2, '0')}</span>
                   {item.label}
@@ -177,26 +113,13 @@ export default function Header({ onHome = true }) {
               </li>
             ))}
           </ul>
-
           <div className="mt-auto pt-10">
-            <Button
-              href={whatsappLink('geral')}
-              external
-              icon={WhatsAppIcon}
-              iconPosition="start"
-              className="w-full"
-              onClick={closeFromLink}
-            >
+            <Button href={whatsappLink('geral')} external variant="gold" leadingIcon={WhatsAppIcon} className="w-full justify-between" onClick={closeFromLink}>
               Fale com uma corretora
             </Button>
             <div className="mt-6 flex items-center justify-between text-sm text-white/65">
               <span>CRECI {site.creci}</span>
-              <a
-                href={site.instagram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 hover:text-gold"
-              >
+              <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold">
                 <InstagramIcon className="size-4" />
                 {site.instagram.handle}
                 <span className="sr-only"> (abre em nova aba)</span>
@@ -204,6 +127,72 @@ export default function Header({ onHome = true }) {
             </div>
           </div>
         </nav>
+      </div>
+
+      {/* Barra */}
+      <div
+        className={`relative mx-auto transition-[max-width,margin,padding,background-color,box-shadow,border-radius] duration-700 ease-(--ease-brand) ${
+          compact
+            ? 'mt-2.5 max-w-[min(1180px,calc(100%-1.25rem))] rounded-full bg-royal/95 px-3 py-2 shadow-[0_18px_40px_-20px_rgba(15,33,26,0.6)] ring-1 ring-white/10 sm:mt-3 sm:pl-6'
+            : 'mt-2.5 max-w-[calc(100%-1.25rem)] rounded-[var(--radius-card)] px-4 py-4 sm:mt-4 sm:max-w-[calc(100%-2rem)] sm:px-8 sm:py-6'
+        }`}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <a href={onHome ? '#inicio' : '/'} className="shrink-0" aria-label="Imobiliária Delpupo do Carmo — página inicial">
+            <Logo variant="light" height={44} className={`w-auto transition-[height] duration-500 ${compact ? 'h-9' : 'h-10 lg:h-11'}`} />
+          </a>
+
+          <nav aria-label="Navegação principal" className="hidden xl:block">
+            <ul className="flex items-center gap-1.5">
+              {navigation.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={hrefFor(item.id)}
+                    aria-current={onHome && active === item.id ? 'true' : undefined}
+                    className="inline-flex rounded-full border border-white/20 px-4 py-1.5 text-[0.82rem] text-white/85 transition-colors duration-300 hover:border-white/60 hover:text-white aria-[current]:border-white aria-[current]:bg-white aria-[current]:text-royal"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href={site.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden size-10 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-gold hover:text-gold lg:inline-flex"
+            >
+              <InstagramIcon className="size-4" />
+              <span className="sr-only">Instagram (abre em nova aba)</span>
+            </a>
+            <a
+              href={whatsappLink('geral')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden h-10 items-center gap-2 rounded-full bg-white pr-4 pl-1.5 text-[0.82rem] font-medium whitespace-nowrap text-royal transition-colors hover:bg-gold md:inline-flex"
+            >
+              <span className="inline-flex size-7 items-center justify-center rounded-full bg-royal text-gold">
+                <WhatsAppIcon className="size-3.5" />
+              </span>
+              Fale com uma corretora
+              <span className="sr-only"> (abre em nova aba)</span>
+            </a>
+            <button
+              ref={toggleRef}
+              type="button"
+              onClick={() => setOpen((value) => !value)}
+              aria-expanded={open}
+              aria-controls="menu-mobile"
+              className="inline-flex size-10 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-gold hover:text-gold xl:hidden"
+            >
+              <span className="sr-only">{open ? 'Fechar menu' : 'Abrir menu'}</span>
+              {open ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   )

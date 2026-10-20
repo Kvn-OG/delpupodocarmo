@@ -128,7 +128,7 @@ export default function ContactForm() {
   const showError = (name) => touched[name] && errors[name]
 
   const inputClass = (name) =>
-    `mt-2 block w-full rounded-md border bg-white px-4 py-3.5 text-base text-royal placeholder:text-royal/40 transition-[border-color,box-shadow] duration-300 focus:border-royal focus:ring-2 focus:ring-gold/50 focus:outline-none ${
+    `mt-2 block w-full rounded-xl border bg-white px-4 py-3.5 text-base text-royal placeholder:text-royal/40 transition-[border-color,box-shadow] duration-300 focus:border-royal focus:ring-2 focus:ring-gold/50 focus:outline-none ${
       showError(name) ? 'border-red-700' : 'border-royal/20'
     }`
 
@@ -277,7 +277,7 @@ export default function ContactForm() {
 
       <div aria-live="polite" role="status">
         {status.type === 'whatsapp' && (
-          <p className="flex gap-3 rounded-md border border-royal/15 bg-cream p-4 text-sm text-royal">
+          <p className="flex gap-3 rounded-xl border border-royal/15 bg-white p-4 text-sm text-royal">
             <CircleCheck className="mt-0.5 size-5 shrink-0 text-brown" aria-hidden="true" />
             <span>
               Abrimos o WhatsApp com a sua mensagem pronta. Para concluir o contato, é só enviá-la por lá. Se a conversa
@@ -290,13 +290,13 @@ export default function ContactForm() {
           </p>
         )}
         {status.type === 'sent' && (
-          <p className="flex gap-3 rounded-md border border-royal/15 bg-cream p-4 text-sm text-royal">
+          <p className="flex gap-3 rounded-xl border border-royal/15 bg-white p-4 text-sm text-royal">
             <CircleCheck className="mt-0.5 size-5 shrink-0 text-brown" aria-hidden="true" />
             Recebemos seus dados! Em breve uma de nossas corretoras entrará em contato.
           </p>
         )}
         {status.type === 'error' && (
-          <p className="flex gap-3 rounded-md border border-red-800/30 bg-red-50 p-4 text-sm text-red-900">
+          <p className="flex gap-3 rounded-xl border border-red-800/30 bg-red-50 p-4 text-sm text-red-900">
             <CircleAlert className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
             <span>
               Não foi possível enviar agora. Você pode{' '}
