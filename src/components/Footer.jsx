@@ -14,7 +14,7 @@ export default function Footer({ onHome = true }) {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <Logo variant="light" height={64} className="h-14 w-auto sm:h-16" />
-            <p className="mt-7 font-slogan text-lg tracking-wide text-gold">{site.slogan}</p>
+            <p className="mt-7 font-sans text-lg tracking-wide text-gold">{site.slogan}</p>
             <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed">
               Compra, venda e locação de imóveis, lançamentos imobiliários e orientação para quem deseja conquistar seu
               lugar.

@@ -35,7 +35,7 @@ export default function FinalCTA() {
               Conheça nossos imóveis
             </Button>
           </div>
-          <p data-animate="fade" className="mt-14 font-slogan text-[0.95rem] tracking-[0.06em] text-gold">
+          <p data-animate="fade" className="mt-14 font-sans text-[0.95rem] tracking-[0.06em] text-gold">
             Delpupo do Carmo — transformando sonhos em endereços.
           </p>
         </div>

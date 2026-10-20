@@ -1,37 +1,42 @@
 /* ------------------------------------------------------------------
    Fontes
    ------------------------------------------------------------------
-   As fontes oficiais da marca (Montecatini Pro e Azo Sans) são
-   licenciadas e ainda não foram disponibilizadas no projeto.
+   Fontes oficiais da marca (pagas):
+   - Giarek Regular   → primária, headlines
+   - Aalto Sans Pro   → secundária, textos menores e parágrafos
 
-   Enquanto isso, usamos fallbacks de licença aberta, hospedados
-   localmente via Fontsource (sem requisições a terceiros):
-   - Marcellus  → títulos (serifas "flare", próxima da Montecatini Pro)
-   - Jost       → textos e slogan (geométrica, próxima da Azo Sans)
+   Equivalentes gratuitas (licença SIL OFL), hospedadas localmente via
+   Fontsource, escolhidas por comparação visual com as originais:
+   - Noto Serif Display (variável, largura reduzida para ~85%)
+       alto contraste, altura-x alta e proporções mais estreitas, como a Giarek
+   - Encode Sans (variável)
+       sans serif humanista, neutra e amigável, como a Aalto Sans
 
-   Para ativar as fontes oficiais:
-   1. Copie os arquivos .woff2 licenciados para src/assets/fonts/
-   2. Descomente os blocos @font-face abaixo e ajuste os nomes
-      dos arquivos. Os tokens --font-display e --font-slogan
-      (src/index.css) já listam as fontes oficiais em primeiro lugar.
+   Os nomes oficiais NÃO estão na pilha de fontes de propósito: se estivessem,
+   quem tivesse a Giarek ou a Aalto instaladas no computador veria um site
+   diferente do que o público vê.
+
+   Para usar os arquivos licenciados no site: copie os .woff2 para
+   src/assets/fonts/, descomente os blocos @font-face abaixo e coloque
+   'Giarek' e 'Aalto Sans Pro' no início de --font-display e --font-sans
+   (src/index.css).
 ------------------------------------------------------------------- */
 
-@import '@fontsource/marcellus/latin-400.css';
-@import '@fontsource/marcellus/latin-ext-400.css';
-@import '@fontsource-variable/jost/wght.css';
+@import '@fontsource-variable/noto-serif-display/wdth.css';
+@import '@fontsource-variable/encode-sans/wght.css';
 
 /*
 @font-face {
-  font-family: 'Montecatini Pro';
-  src: url('../assets/fonts/MontecatiniPro-Regular.woff2') format('woff2');
+  font-family: 'Giarek';
+  src: url('../assets/fonts/Giarek-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Azo Sans';
-  src: url('../assets/fonts/AzoSans-Regular.woff2') format('woff2');
+  font-family: 'Aalto Sans Pro';
+  src: url('../assets/fonts/AaltoSansPro-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

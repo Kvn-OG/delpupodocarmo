@@ -37,9 +37,10 @@ assets/                          arquivos originais da marca (não vão para o b
 comentado no arquivo) e a foto em `public/images/imoveis/`. Com ao menos um imóvel, a
 vitrine troca o estado vazio pelos cards automaticamente.
 
-**Fontes oficiais** — copie os `.woff2` licenciados de Montecatini Pro e Azo Sans para
-`src/assets/fonts/` e descomente os `@font-face` em `src/styles/fonts.css`.
-Enquanto isso, o site usa Marcellus (títulos) e Jost (textos), hospedadas localmente.
+**Fontes** — as oficiais são Giarek Regular (headlines) e Aalto Sans Pro (textos), ambas pagas.
+O site usa equivalentes gratuitas (OFL) hospedadas localmente: Noto Serif Display, com largura
+reduzida para se aproximar da Giarek, e Encode Sans. Para usar as oficiais, copie os `.woff2`
+licenciados para `src/assets/fonts/` e descomente os `@font-face` em `src/styles/fonts.css`.
 
 **Novos vídeos de entrega de chaves** — converta para MP4 H.264 (vídeos HEVC/.mov do
 iPhone não tocam no Chrome/Windows), coloque em `public/media/` com um poster `.webp`

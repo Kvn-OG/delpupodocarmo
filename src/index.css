@@ -24,9 +24,10 @@
   --color-sand: #e7e0cf;
 
   /* Tipografia — arquivos oficiais entram primeiro na pilha (ver styles/fonts.css) */
-  --font-display: 'Montecatini Pro', 'Marcellus', 'Cormorant Garamond', Georgia, serif;
-  --font-slogan: 'Azo Sans', 'Jost Variable', 'Jost', system-ui, sans-serif;
-  --font-sans: 'Jost Variable', 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Primária (headlines): equivalente gratuita da Giarek */
+  --font-display: 'Noto Serif Display Variable', Georgia, serif;
+  /* Secundária (textos menores e parágrafos): equivalente gratuita da Aalto Sans Pro */
+  --font-sans: 'Encode Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
   --radius-card: 1.75rem;
@@ -57,6 +58,14 @@
   h3 {
     @apply font-display;
     letter-spacing: -0.01em;
+  }
+
+  /* Largura reduzida aproxima a Noto Serif Display das proporções da Giarek
+     (ignorado quando a Giarek oficial está disponível) */
+  .font-display,
+  h2,
+  h3 {
+    font-stretch: 85%;
   }
 
   p {
