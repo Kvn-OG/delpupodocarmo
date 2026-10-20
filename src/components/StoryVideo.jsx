@@ -34,16 +34,9 @@ export default function StoryVideo({ story }) {
           aria-label={`${story.title}: ${story.names}`}
         />
         {!started && (
-          <button
-            type="button"
-            onClick={play}
-            className="absolute inset-0 flex items-end justify-between bg-gradient-to-t from-royal-900/90 via-transparent to-transparent p-4 text-left text-white"
-          >
-            <span>
-              <span className="block text-[0.68rem] tracking-[0.18em] text-gold uppercase">{story.title}</span>
-              <span className="mt-1 block font-display text-xl leading-tight">{story.names}</span>
-            </span>
-            <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-white text-royal transition-transform duration-500 ease-(--ease-brand) group-hover:scale-110">
+          // A capa já traz o título e os nomes; o play fica no canto para não cobrir a arte
+          <button type="button" onClick={play} className="absolute inset-0 flex items-start justify-end p-3">
+            <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-white/90 text-royal shadow-lg shadow-royal-900/30 backdrop-blur-sm transition-transform duration-500 ease-(--ease-brand) group-hover:scale-110">
               <Play className="ml-0.5 size-5" fill="currentColor" aria-hidden="true" />
             </span>
             <span className="sr-only">

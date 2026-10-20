@@ -105,7 +105,7 @@ export default function About() {
                     width="44"
                     height="44"
                     loading="lazy"
-                    className="size-11 rounded-full border-2 border-white object-cover"
+                    className="size-11 rounded-full border-2 border-white object-cover object-[50%_25%]"
                   />
                 ))}
                 <span className="inline-flex size-11 items-center justify-center rounded-full border-2 border-white bg-royal text-gold">
