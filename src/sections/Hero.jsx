@@ -70,7 +70,7 @@ export default function Hero() {
           <h1
             id="hero-title"
             data-hero="title"
-            className="text-center font-display text-[clamp(2.4rem,0.9rem+8vw,5rem)] lg:text-[min(8vw,9.5rem)] short:text-[clamp(2.4rem,6.6vw,3.8rem)] leading-[1.02] tracking-[-0.015em] text-white"
+            className="text-center font-display text-[clamp(2.2rem,0.9rem+6.4vw,4rem)] lg:text-[min(5.9vw,7rem)] short:text-[clamp(1.9rem,4.9vw,2.8rem)] leading-[1.02] tracking-[-0.015em] text-white"
           >
             <Words text={TITLE} />
           </h1>
@@ -89,7 +89,7 @@ export default function Hero() {
             height="853"
             priority
             className="block"
-            imgClassName="aspect-[4/3] w-full scale-110 object-cover sm:aspect-[16/9] lg:aspect-[16/7] short:aspect-[7/2]"
+            imgClassName="aspect-[4/3] w-full scale-110 object-cover sm:aspect-[16/9] lg:aspect-[16/7] short:aspect-[3/1]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-royal/50 via-transparent to-transparent" aria-hidden="true" />
         </figure>

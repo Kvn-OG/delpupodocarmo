@@ -5,15 +5,12 @@
    - Giarek Regular   → primária, headlines
    - Aalto Sans Pro   → secundária, textos menores e parágrafos
 
-   Headlines seguem o estilo da Bafegis (Ermedia Studio, paga; a versão
-   gratuita é demo de uso pessoal e não pode ser usada neste site).
-
-   Equivalentes gratuitas (licença SIL OFL), hospedadas localmente via
-   Fontsource, escolhidas por comparação visual com as originais:
-   - Noto Serif Display (variável, largura 66% e peso 380 — ver src/index.css)
-       condensada e de alto contraste, como a Bafegis
+   Fontes em uso (licença SIL OFL), hospedadas localmente via Fontsource:
+   - Marcellus
+       headlines; serifas suaves em "flare", em sintonia com o logotipo
    - Encode Sans (variável)
-       sans serif humanista, neutra e amigável, como a Aalto Sans
+       textos menores e parágrafos; sans serif humanista, neutra e amigável,
+       escolhida por ser a gratuita mais parecida com a Aalto Sans
 
    Os nomes oficiais NÃO estão na pilha de fontes de propósito: se estivessem,
    quem tivesse a Giarek ou a Aalto instaladas no computador veria um site
@@ -25,7 +22,8 @@
    (src/index.css).
 ------------------------------------------------------------------- */
 
-@import '@fontsource-variable/noto-serif-display/wdth.css';
+@import '@fontsource/marcellus/latin-400.css';
+@import '@fontsource/marcellus/latin-ext-400.css';
 @import '@fontsource-variable/encode-sans/wght.css';
 
 /*
